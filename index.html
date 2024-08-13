@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThriftReads - Book Catalogue</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('background.jpeg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+        .catalogue-title {
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            color: #fff;
+        }
+        .book-card {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            background-color: #343a40;
+            color: #fff;
+            max-width: 220px; /* Set a maximum width for the book card */
+            margin: auto; /* Center the card horizontally */
+        }
+        .book-card img {
+            max-width: 100%; /* Ensure image fits within the card */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .book-card .card-body {
+            padding: 10px; /* Adjust padding for a smaller card */
+        }
+        .book-card .card-title {
+            font-size: 1.25rem; /* Smaller font size for the title */
+        }
+        .book-card .card-text {
+            font-size: 0.875rem; /* Smaller font size for the text */
+        }
+        .book-card:hover {
+            transform: translateY(-10px);
+        }
+        .btn-custom {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h1 class="catalogue-title">ThriftReads</h1>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="card book-card">
+                        <img src="book1.jpeg.jpg" class="card-img-top" alt="Book 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Beautiful World Where Are You</h5>
+                            <p class="card-text">Beautiful World, Where Are You is a novel by Irish author Sally Rooney. It was released on 7 September 2021.</p>
+                            <p class="card-text">₹250</p>
+                            <a href="#" class="btn btn-primary" onclick="addToCart('Beautiful World Where Are You', 250)">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card book-card">
+                        <img src="book2.jpeg" class="card-img-top" alt="Book 2">
+                        <div class="card-body">
+                            <h5 class="card-title">The God Of Small Things</h5>
+                            <p class="card-text">The God of Small Things is a family drama novel written by Indian writer Arundhati Roy.</p>
+                            <p class="card-text">₹199</p>
+                            <a href="#" class="btn btn-primary" onclick="addToCart('The God Of Small Things', 199)">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card book-card">
+                        <img src="book3.jpeg" class="card-img-top" alt="Book 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Almond</h5>
+                            <p class="card-text">The Emissary meets The Curious Incident of the Dog in the Nighttime in this poignant and triumphant story about how love, friendship, and persistence can change.</p>
+                            <p class="card-text">₹300</p>
+                            <a href="#" class="btn btn-primary" onclick="addToCart('Almond', 300)">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card book-card">
+                        <img src="book4.jpeg" class="card-img-top" alt="Book 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Gone Girl</h5>
+                            <p class="card-text">Gone Girl is a 2012 crime thriller novel by American writer Gillian Flynn.</p>
+                            <p class="card-text">₹200</p>
+                            <a href="#" class="btn btn-primary" onclick="addToCart('Gone Girl', 200)">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card book-card">
+                        <img src="book5.jpeg" class="card-img-top" alt="Book 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Looking For Alaska</h5>
+                            <p class="card-text">Looking for Alaska is a coming-of-age novel that touches on themes of meaning, grief, hope, and youth–adult relationships.</p>
+                            <p class="card-text">₹299</p>
+                            <a href="#" class="btn btn-primary" onclick="addToCart('Looking For Alaska', 299)">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card book-card">
+                        <img src="book6.jpeg" class="card-img-top" alt="Book 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Bridge Of Clay</h5>
+                            <p class="card-text">The breathtaking story of five brothers who bring each other up in a world run by their own rules.</p>
+                            <p class="card-text">₹400</p>
+                            <a href="#" class="btn btn-primary" onclick="addToCart('Bridge Of Clay', 400)">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="cart.html" class="btn btn-secondary">Go to Cart</a>
+        </div>
+    </div>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(title + ' has been added to your cart.');
+        }
+    </script>
+</body>
+</html>

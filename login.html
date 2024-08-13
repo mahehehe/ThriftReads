@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThriftReads - Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('background.jpeg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 50px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #343a40;
+        }
+        .login-container h1 {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            color: #343a40;
+        }
+        .login-container p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        .btn-custom {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="login-container">
+            <h1>ThriftReads</h1>
+            <p>Your go-to site for quality second-hand books at affordable prices.</p>
+            <form action="index.html">
+                <input type="text" class="form-control" placeholder="Username" required>
+                <input type="password" class="form-control" placeholder="Password" required>
+                <button type="submit" class="btn btn-custom btn-block">Log In</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
